@@ -1,0 +1,56 @@
+prompt='Enter the number of equations\n';
+n=input(prompt);
+prompt='Enter matrix A for the equation Ax=b\n';
+A=input(prompt);
+ while length(A)~=n
+     prompt='Given number of equations and length of A must be the same\n Enter A\n';
+     A=input(prompt);
+ end
+prompt='Enter b for the equation Ax=b\n';
+b=input(prompt);
+while length(b)~=n
+     prompt='Given number of equations and length of b must be the same\n Enter b\n';
+     b=input(prompt);
+end
+prompt='Enter an initial x vector\n';
+x=input(prompt);
+while length(x)~=n
+     prompt='Given number of equations and length of x must be the same\n Enter x\n';
+     x=input(prompt);
+end
+a=input(prompt);
+a=0;
+while a~=1 && a~=2 && a~=3  
+   prompt='Press 1 to enter an iteration number or press 2 to enter error or 3 for both';
+   a=input(prompt);
+   if a==1
+    prompt='Enter iteration number\n';
+    itn=input(prompt);
+    for i=1:itn
+      for j=1:n
+        x(j) = (b(j) - sum(A(j,[1:j-1 j+1:n]) .* x([1:j-1 j+1:n]))) ./ A(j,j);
+      end
+    end
+   end
+   elseif a==2
+       prompt='Enter error\n';
+       error=(prompt);
+       error1=error*2;
+       while abs(error1)>error
+           for j=1:n
+                x(j) = (b(j) - sum(A(j,[1:j-1 j+1:n]) .* x([1:j-1 j+1:n]))) ./ A(j,j);
+           end
+       
+     
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+display(x);
